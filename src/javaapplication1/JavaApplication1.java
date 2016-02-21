@@ -6,7 +6,7 @@
 package javaapplication1;
 
 // Imports
-
+import java.util.Random;
 
 /**
  *
@@ -20,7 +20,12 @@ public class JavaApplication1 {
     public static void main(String[] args) {
         // TODO code application logic here
         //System.out.println("Hi test!");
-        int[] Data={2,3,56,34,64,86,2,345,23,43};
+        
+        //Input
+        int n=10; //Length of data array
+        
+        int[] Data=DataRand(n);
+        
         int[] BiggestDiff={Data[1]-Data[2],1,2};
         int diff;
         
@@ -35,6 +40,21 @@ public class JavaApplication1 {
         
        System.out.println("The biggest profit would be "+Integer.toString(BiggestDiff[0])+" buying on day "+Integer.toString(BiggestDiff[1])+" and selling on day "+Integer.toString(BiggestDiff[2]));
         
+    }
+    
+    public static int randomFill() {
+        Random rand = new Random();
+        int randNum = rand.nextInt();
+        return randNum;
+    }
+    
+    public static int[] DataRand(int n) {
+        int[] data = new int[n];
+        for(int c1=0; c1<n; c1++) {
+            data[c1]=randomFill();
+            
+        }
+        return data;
     }
     
 }
