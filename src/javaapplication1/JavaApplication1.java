@@ -22,21 +22,31 @@ public class JavaApplication1 {
         //System.out.println("Hi test!");
         
         //Input
-        int n=10; //Length of data array
+        int n=100000; //Length of data array
         
         int[] Data=DataRand(n);
         
-        int[] BiggestDiff={Data[1]-Data[2],1,2};
-        int diff;
+        int[] BiggestDiff={Integer.MIN_VALUE,0,0};
+        int[] CurrentMin={Integer.MAX_VALUE,0};
         
-        for(int c1=2; c1<Data.length; c1++){
-            for(int c2=0; c2<c1; c2++){
-                diff=Data[c1]-Data[c2];
-                if(diff>BiggestDiff[0]){
-                    BiggestDiff=new int[]{diff,c2+1,c1+1};
-                }
+        for(int c1=0; c1<Data.length; c1++) {
+            if(Data[c1]-CurrentMin[0] > BiggestDiff[0]) {
+                BiggestDiff=new int[]{Data[c1]-CurrentMin[0],CurrentMin[1]+1,c1+1};              
+            }
+            if(CurrentMin[0] > Data[c1]) {
+                CurrentMin=new int[]{Data[c1],c1};              
             }
         }
+              
+        
+//        for(int c1=2; c1<Data.length; c1++){
+//            for(int c2=0; c2<c1; c2++){
+//                diff=Data[c1]-Data[c2];
+//                if(diff>BiggestDiff[0]){
+//                    BiggestDiff=new int[]{diff,c2+1,c1+1};
+//                }
+//            }
+//        }
         
        System.out.println("The biggest profit would be "+Integer.toString(BiggestDiff[0])+" buying on day "+Integer.toString(BiggestDiff[1])+" and selling on day "+Integer.toString(BiggestDiff[2]));
         
